@@ -1,0 +1,10 @@
+Variables.CreateNewList List=> List
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $'''LocalAnexo''' Visible: True ReadOnly: False Instance=> ExcelInstance
+Excel.GetFirstFreeRowOnColumn Instance: ExcelInstance Column: $'''a''' FirstFreeRowOnColumn=> FirstFreeRowOnColumn
+Excel.ReadFromExcel.ReadCell Instance: ExcelInstance StartColumn: $'''a''' StartRow: FirstFreeRowOnColumn - 1 ReadAsText: False CellValue=> ExcelData
+Variables.IncreaseVariable Value: ExcelData IncrementValue: 1
+LOOP LoopIndex FROM ExcelData TO 6000 STEP 1
+    Variables.AddItemToList Item: LoopIndex List: List
+END
+Display.ShowMessageDialog.ShowMessage Message: $'''ok''' Icon: Display.Icon.None Buttons: Display.Buttons.OK DefaultButton: Display.DefaultButton.Button1 IsTopMost: False ButtonPressed=> ButtonPressed
+Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: List Column: $'''a''' Row: FirstFreeRowOnColumn
