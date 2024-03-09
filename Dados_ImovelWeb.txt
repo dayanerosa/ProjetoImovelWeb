@@ -1,0 +1,2 @@
+@@copilotGeneratedAction: 'False'
+Database.ExecuteSqlStatement.Execute Connection: SQLConnection Statement: $'''Select *from DadosImovel''' Timeout: 30 Result=> QueryResult

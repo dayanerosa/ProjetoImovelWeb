@@ -1,0 +1,4 @@
+IF (Folder.IfFolderExists.DoesNotExist Path: $'''C:\\ImovelWeb''') THEN
+    Folder.Create FolderPath: $'''C:\\''' FolderName: $'''ImovelWeb''' Folder=> NewFolder
+END
+Database.Connect ConnectionString: $'''Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=ImovelWeb;Data Source=localhost\\SQLEXPRESS;Extended Properties=\"Server=localhost\\SQLEXPRESS;Database=ImovelWeb\"''' Connection=> SQLConnection
